@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+            margin: 0;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        #clicker-btn {
+            font-size: 24px;
+            padding: 20px 40px;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.1s;
+            position: relative;
+        }
+        #clicker-btn:active {
+            transform: scale(0.95);
+        }
+        #score {
+            margin-top: 30px;
+            font-size: 28px;
+            color: #333;
+        }
+        .coin {
+            position: absolute;
+            font-size: 24px;
+            animation: fly 1s forwards;
+        }
+        @keyframes fly {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-100px) scale(0.5); }
+        }
+        #balance-btn {
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #00cc66;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Мой Clicker</h1>
+    <button id="clicker-btn">Играть!</button>
+    <div id="score">Счёт: 0</div>
+    <button id="balance-btn">Показать баланс</button>
+
+    <script>
+        let score = 0;
+        const btn = document.getElementById('clicker-btn');
+        const scoreDisplay = document.getElementById('score');
+        const balanceBtn = document.getElementById('balance-btn');
+
+        btn.addEventListener('click', (e) => {
+            score++;
+            scoreDisplay.textContent = `Счёт: ${score}`;
+
+            // Создаём монетку
+            const coin = document.createElement('div');
+            coin.classList.add('coin');
+            coin.textContent = '🪙';
+            document.body.appendChild(coin);
+
+            // Ставим монетку там, где кликнули
+            const rect = btn.getBoundingClientRect();
+            coin.style.left = `${rect.left + rect.width/2 - 12}px`;
+            coin.style.top = `${rect.top - 24}px`;
+
+            // Убираем монетку после анимации
+            setTimeout(() => coin.remove(), 1000);
+        });
+
+        balanceBtn.addEventListener('click', () => {
+            alert(`Ваш баланс: ${score} монет`);
+        });
+    </script>
+
+</body>
+</html>
