@@ -1,61 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clicker Game</title>
 <style>
-body {
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    background: linear-gradient(to right, #fbc2eb, #a6c1ee);
-    margin:0; padding:50px;
-}
+body { font-family: 'Arial', sans-serif; text-align: center; background: linear-gradient(to right, #fbc2eb, #a6c1ee); margin:0; padding:50px; }
 h1 { color:#333; margin-bottom:20px; }
-#clicker-btn {
-    font-size:24px;
-    padding:20px 40px;
-    background-color:#ffcc00;
-    border:none;
-    border-radius:15px;
-    cursor:pointer;
-    transition: transform 0.1s;
-    position: relative;
-}
+#clicker-btn { font-size:24px; padding:20px 40px; background-color:#ffcc00; border:none; border-radius:15px; cursor:pointer; transition: transform 0.1s; position: relative; }
 #clicker-btn:active { transform: scale(0.95); }
-#score {
-    margin-top:20px;
-    font-size:32px;
-    color:#333;
-    font-weight:bold;
-    text-shadow: 1px 1px 2px #fff;
-}
-.coin {
-    position:absolute;
-    width:30px;
-    height:30px;
-    background-image: url('https://i.ibb.co/xs5P1sK/coin.png'); /* ссылка на монетку */
-    background-size: cover;
-    animation: fly 1s forwards;
-}
-@keyframes fly {
-    0% { opacity:1; transform: translateY(0) scale(1); }
-    100% { opacity:0; transform: translateY(-100px) scale(0.5); }
-}
-#balance-btn {
-    margin-top:20px;
-    font-size:18px;
-    padding:10px 20px;
-    border:none;
-    border-radius:10px;
-    background-color:#00cc66;
-    color:white;
-    cursor:pointer;
-}
+#score { margin-top:20px; font-size:32px; color:#333; font-weight:bold; text-shadow: 1px 1px 2px #fff; }
+.coin { position:absolute; width:30px; height:30px; background-image: url('https://i.ibb.co/xs5P1sK/coin.png'); background-size: cover; animation: fly 1s forwards; }
+@keyframes fly { 0% { opacity:1; transform: translateY(0) scale(1); } 100% { opacity:0; transform: translateY(-100px) scale(0.5); } }
+#balance-btn { margin-top:20px; font-size:18px; padding:10px 20px; border:none; border-radius:10px; background-color:#00cc66; color:white; cursor:pointer; }
 </style>
 </head>
 <body>
-
 <h1>Мой Clicker</h1>
 <button id="clicker-btn">Играть!</button>
 <div id="score">Счёт: 0</div>
@@ -72,27 +32,23 @@ const clickSound = document.getElementById('click-sound');
 
 btn.addEventListener('click', (e) => {
     score++;
-    scoreDisplay.textContent = `Счёт: ${score}`;
-    
-    // проигрываем звук
+    scoreDisplay.textContent = Счёт: ;
     clickSound.currentTime = 0;
     clickSound.play();
 
-    // создаём монетку
     const coin = document.createElement('div');
     coin.classList.add('coin');
     document.body.appendChild(coin);
     const rect = btn.getBoundingClientRect();
-    coin.style.left = `${rect.left + rect.width/2 - 15}px`;
-    coin.style.top = `${rect.top - 30}px`;
+    coin.style.left = ${rect.left + rect.width/2 - 15}px;
+    coin.style.top = ${rect.top - 30}px;
     setTimeout(() => coin.remove(), 1000);
 });
 
 balanceBtn.addEventListener('click', () => {
-    alert(`Ваш баланс: ${score} монет`);
+    alert(Ваш баланс:  монет);
 });
 </script>
 
 </body>
 </html>
-
